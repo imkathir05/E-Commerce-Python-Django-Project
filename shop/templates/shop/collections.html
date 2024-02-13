@@ -1,0 +1,45 @@
+{% extends "shop/layouts/main.html" %}
+{% block title %}
+    Registration | Shopcart
+{% endblock title %}
+{% block content%}
+<section class="py-5 text-center container"  style="margin-top:70px;">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Bestsellers</h1>
+        <p class="lead text-muted">Our most popular products based on sales. Updated hourly.</p>
+        <p>
+          <a href="{% url 'login' %}" class="btn btn-primary my-2">Already User</a>
+          <a href="{% url 'register' %}" class="btn btn-secondary my-2">Register</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light my-5 py-4  ">
+    <div class="container ">
+        <div class="row">
+            <div class=col-12 >
+                <h5 class="mb-3" >Catagories</h5>
+                <hr style="border-color:#b8bfc2;">
+                {% include "shop/inc/message.html" %}
+            </div>
+            {% for item in catagory %}
+            <div class="col-md-4 col-lg-3  my-3">
+                <div class="card h-100 anchor_remove  ">
+                    <img src="{{item.image.url}}" class="card-img-top " alt="Catagories " style="height:70%">
+                    <a href="{% url 'collections' item.name %}">
+                    <div class="card-body prices_rs">
+                        <h5 class="card-title text-primary  ">{{ item.name }}</h5>
+                        <p clas="card-text ">{{item.description}}</p>
+                    </div>
+                    </a>
+                  </div>
+              </div>
+            {% endfor %}
+        </div>
+    </div>
+  </section>
+
+  
+{% endblock content%}
